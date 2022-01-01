@@ -1,14 +1,17 @@
 package runner;
 
+import annotations.MVC;
 import core.Model;
 import core.View;
 import core.Controller;
+import org.reflections.Reflections;
 import util.Navigator;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public final class GUI extends JFrame
 {
@@ -94,11 +97,17 @@ public final class GUI extends JFrame
      */
     public static void createAndStart()
     {
-        GUI gui = new GUI();
+        //GUI gui = new GUI();
 
-        // TODO: Add a way to register screens with annotations and dependency injection
+        Reflections reflections = new Reflections("com.redstoneblocks.java");
 
-        gui.setVisible(true);
+        Set<Class<?>> annotatedClasses = reflections.getTypesAnnotatedWith(MVC.class);
+
+        for(Class<?> annotatedClass: annotatedClasses) {
+            System.out.println(annotatedClass);
+        }
+
+        //gui.setVisible(true);
     }
 
 }
