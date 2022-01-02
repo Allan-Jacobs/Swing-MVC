@@ -8,14 +8,14 @@ import java.lang.reflect.InvocationTargetException;
 
 /**
  * This class encapsulates a model, view, and controller
- * @param <ModelClass> the class of the model, eg <code>core.Model.class</code>
- * @param <ViewClass> the class of the view, eg <code>core.View.class</code>
+ *
+ * @param <ModelClass>      the class of the model, eg <code>core.Model.class</code>
+ * @param <ViewClass>       the class of the view, eg <code>core.View.class</code>
  * @param <ControllerClass> the class of the core.Controller, eg <code>core.Controller.class</code>
  */
 public class ScreenCreator<ModelClass extends Class<? extends Model>,
-                        ViewClass extends Class<? extends View>,
-                        ControllerClass extends Class<? extends Controller>>
-{
+        ViewClass extends Class<? extends View>,
+        ControllerClass extends Class<? extends Controller>> {
     private final ModelClass modelClass;
     private final ViewClass viewClass;
     private final ControllerClass controllerClass;
@@ -30,8 +30,7 @@ public class ScreenCreator<ModelClass extends Class<? extends Model>,
         this.name = name;
     }
 
-    public Screen create()
-    {
+    public Screen create() {
         try {
 
             Model model = modelClass.newInstance();
@@ -45,8 +44,7 @@ public class ScreenCreator<ModelClass extends Class<? extends Model>,
         return null;
     }
 
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 }

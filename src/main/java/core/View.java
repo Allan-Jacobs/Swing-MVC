@@ -1,7 +1,5 @@
 package core;
 
-import core.Model;
-
 import javax.swing.*;
 
 /**
@@ -11,6 +9,7 @@ abstract public class View {
 
     /**
      * This method should create the views components
+     *
      * @param model the model to base the view off of initially
      */
     public abstract void create(Model model);

@@ -11,11 +11,11 @@ public abstract class Controller {
 
     /**
      * Create the controller with the view and model
-     * @param view the view (gui)
+     *
+     * @param view  the view (gui)
      * @param model the model (data)
      */
-    public Controller(View view, Model model)
-    {
+    public Controller(View view, Model model) {
         this.view = view;
         this.model = model;
     }
@@ -23,6 +23,7 @@ public abstract class Controller {
     /**
      * This should be used for initialization logic.
      * This includes binding event listeners, and loading in data
+     *
      * @param nav the navigator (change screens)
      */
     abstract protected void onInit(Navigator nav);
@@ -34,18 +35,18 @@ public abstract class Controller {
 
     /**
      * Get the view for the runner.GUI to render it.
+     *
      * @return the controllers view
      */
     public View getView() {
         return view;
     }
 
-    public void init(Navigator nav)
-    {
+    public void init(Navigator nav) {
         onInit(nav);
     }
-    public void cleanup()
-    {
+
+    public void cleanup() {
         onCleanup();
     }
 }

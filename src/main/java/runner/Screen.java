@@ -10,8 +10,7 @@ public class Screen {
     private final Controller controller;
     private final String name;
 
-    public Screen(Model model, View view, Controller controller, String name)
-    {
+    public Screen(Model model, View view, Controller controller, String name) {
         this.model = model;
         this.view = view;
         this.controller = controller;
