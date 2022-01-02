@@ -1,4 +1,4 @@
-package util;
+package dev.util;
 
 import annotations.MVC;
 import core.Model;
