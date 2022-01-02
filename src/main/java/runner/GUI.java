@@ -9,6 +9,7 @@ import util.Navigator;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -97,17 +98,15 @@ public final class GUI extends JFrame
      */
     public static void createAndStart()
     {
-        //GUI gui = new GUI();
+        GUI gui = new GUI();
 
-        Reflections reflections = new Reflections("com.redstoneblocks.java");
-
-        Set<Class<?>> annotatedClasses = reflections.getTypesAnnotatedWith(MVC.class);
-
-        for(Class<?> annotatedClass: annotatedClasses) {
-            System.out.println(annotatedClass);
+        try {
+            Arrays.stream(ScreenFinder.find()).forEach(gui::addScreen);
+        } catch (ScreenMissingPartsException | DuplicateScreenException e) {
+            e.printStackTrace();
         }
 
-        //gui.setVisible(true);
+        gui.setVisible(true);
     }
 
 }
