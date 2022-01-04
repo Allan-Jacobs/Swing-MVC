@@ -5,7 +5,9 @@ import core.Controller;
 import core.Model;
 import core.View;
 import org.reflections.Reflections;
+import util.AnnotationFinder;
 
+import java.lang.annotation.Annotation;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -24,28 +26,25 @@ public class ScreenFinder {
         // name: Model, View, Controller
         Map<String, Tuple<Class<? extends Model>, Class<? extends View>, Class<? extends Controller>>> mvc = new HashMap<>();
 
-        Set<Class<?>> annotatedClasses = reflections.getTypesAnnotatedWith(MVC.class);
-
-        // add all the mvc components
-        for (Class<?> annotatedClass : annotatedClasses) {
-            String key = annotatedClass.getAnnotation(MVC.class).value();
+        AnnotationFinder.find(MVC.class, (clazz) -> {
+            String key = clazz.getAnnotation(MVC.class).value();
             Tuple<Class<? extends Model>, Class<? extends View>, Class<? extends Controller>> v = mvc.getOrDefault(key, new Tuple<>(null, null, null));
 
-            if (Model.class.isAssignableFrom(annotatedClass)) {
-                if (v.first != null) throw new DuplicateScreenException("Duplicate model " + annotatedClass);
-                v = new Tuple<>((Class<? extends Model>) annotatedClass, v.second, v.third);
-            } else if (View.class.isAssignableFrom(annotatedClass)) {
-                if (v.second != null) throw new DuplicateScreenException("Duplicate view " + annotatedClass);
-                v = new Tuple<>(v.first, (Class<? extends View>) annotatedClass, v.third);
-            } else if (Controller.class.isAssignableFrom(annotatedClass)) {
-                if (v.third != null) throw new DuplicateScreenException("Duplicate controller " + annotatedClass);
-                v = new Tuple<>(v.first, v.second, (Class<? extends Controller>) annotatedClass);
+            if (Model.class.isAssignableFrom(clazz)) {
+                if (v.first != null) throw new DuplicateScreenException("Duplicate model " + clazz);
+                v = new Tuple<>((Class<? extends Model>) clazz, v.second, v.third);
+            } else if (View.class.isAssignableFrom(clazz)) {
+                if (v.second != null) throw new DuplicateScreenException("Duplicate view " + clazz);
+                v = new Tuple<>(v.first, (Class<? extends View>) clazz, v.third);
+            } else if (Controller.class.isAssignableFrom(clazz)) {
+                if (v.third != null) throw new DuplicateScreenException("Duplicate controller " + clazz);
+                v = new Tuple<>(v.first, v.second, (Class<? extends Controller>) clazz);
             } else {
-                throw new IllegalArgumentException("Annotated class " + annotatedClass + " does not extend from Model, View, or Controller");
+                throw new IllegalArgumentException("Annotated class " + clazz + " does not extend from Model, View, or Controller");
             }
 
             mvc.put(key, v);
-        }
+        });
 
         ArrayList<ScreenCreator<?, ?, ?>> creators = new ArrayList<>();
 
