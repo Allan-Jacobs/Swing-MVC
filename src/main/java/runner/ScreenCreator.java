@@ -30,6 +30,11 @@ public class ScreenCreator<ModelClass extends Class<? extends Model>,
         this.name = name;
     }
 
+    /**
+     * Create a new <code>Screen</code> via reflection wizardry.
+     *
+     * @return the created screen.
+     */
     public Screen create() {
         try {
 
