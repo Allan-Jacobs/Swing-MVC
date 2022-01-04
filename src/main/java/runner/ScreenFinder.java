@@ -6,6 +6,7 @@ import core.Model;
 import core.View;
 import org.reflections.Reflections;
 import util.AnnotationFinder;
+import util.Tuple;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,7 +15,7 @@ import java.util.Map;
 public class ScreenFinder {
 
     /**
-     * Validates that all the classes make MVC Groups (no missing parts / duplicates), and lists them
+     * Validates that all the classes make MVC Groups (no missing parts / duplicates), and returns them as screen creators.
      *
      * @return the list of screen creators
      */
@@ -29,13 +30,19 @@ public class ScreenFinder {
             Tuple<Class<? extends Model>, Class<? extends View>, Class<? extends Controller>> v = mvc.getOrDefault(key, new Tuple<>(null, null, null));
 
             if (Model.class.isAssignableFrom(clazz)) {
-                if (v.first != null) throw new DuplicateScreenException("Duplicate model " + clazz);
+                if (v.first != null) {
+                    throw new DuplicateScreenException("Duplicate model " + clazz);
+                }
                 v = new Tuple<>((Class<? extends Model>) clazz, v.second, v.third);
             } else if (View.class.isAssignableFrom(clazz)) {
-                if (v.second != null) throw new DuplicateScreenException("Duplicate view " + clazz);
+                if (v.second != null) {
+                    throw new DuplicateScreenException("Duplicate view " + clazz);
+                }
                 v = new Tuple<>(v.first, (Class<? extends View>) clazz, v.third);
             } else if (Controller.class.isAssignableFrom(clazz)) {
-                if (v.third != null) throw new DuplicateScreenException("Duplicate controller " + clazz);
+                if (v.third != null) {
+                    throw new DuplicateScreenException("Duplicate controller " + clazz);
+                }
                 v = new Tuple<>(v.first, v.second, (Class<? extends Controller>) clazz);
             } else {
                 throw new IllegalArgumentException("Annotated class " + clazz + " does not extend from Model, View, or Controller");
@@ -58,17 +65,5 @@ public class ScreenFinder {
         }
 
         return creators.toArray(new ScreenCreator[0]);
-    }
-
-    private static class Tuple<T1, T2, T3> {
-        public final T1 first;
-        public final T2 second;
-        public final T3 third;
-
-        public Tuple(T1 first, T2 second, T3 third) {
-            this.first = first;
-            this.second = second;
-            this.third = third;
-        }
     }
 }
