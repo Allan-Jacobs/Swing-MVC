@@ -11,6 +11,9 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * A class to manage all MVC systems and display them to screen.
+ */
 public final class GUI extends JFrame {
     private final Map<String, ScreenCreator<?, ?, ?>> screens = new HashMap<>();
     private Screen currentScreen = null;
@@ -56,9 +59,11 @@ public final class GUI extends JFrame {
     }
 
     /**
-     * Switch to the specified screen, or if it doesn't exist, do nothing
+     * Switch to the specified screen, or if it doesn't exist, do nothing.
+     * This method is used by navigator to change screens.
      *
      * @param name the name of the screen to switch to
+     * @see Navigator
      */
     public void switchTo(String name, Object metadata) {
         if (!screens.containsKey(name)) return;
@@ -91,10 +96,12 @@ public final class GUI extends JFrame {
     }
 
     /**
-     * A method to see if the runner.GUI contains the specified screen
+     * A method to see if the runner.GUI contains the specified screen.
+     * This method is used by navigator to check for screen existence.
      *
      * @param name the name of the screen creator
      * @return if the gui has a screen creator with that name
+     * @see Navigator
      */
     @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     public boolean containsScreen(String name) {

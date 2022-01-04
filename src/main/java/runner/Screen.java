@@ -4,6 +4,12 @@ import core.Controller;
 import core.Model;
 import core.View;
 
+/**
+ * A class to warp an MVC system. After navigating, it is discarded.
+ * This is created by ScreenCreator during runtime.
+ *
+ * @see ScreenCreator
+ */
 public class Screen {
     private final Model model;
     private final View view;

@@ -12,6 +12,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * A class to find screens annotated with @MVC
+ *
+ * @see GUI
+ */
 public class ScreenFinder {
 
     /**

@@ -1,5 +1,9 @@
 package runner;
 
+/**
+ * This exception is called when two Models, two Views, or two Controllers have the same @MVC() annotation.
+ * This could cause ambiguity, so instead it throws this exception.
+ */
 public class DuplicateScreenException extends RuntimeException {
 
     public DuplicateScreenException() {

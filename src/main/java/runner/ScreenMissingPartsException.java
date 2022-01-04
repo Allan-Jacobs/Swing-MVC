@@ -1,5 +1,9 @@
 package runner;
 
+/**
+ * An exception if a screen does not have all of its parts.
+ * This will be thrown if a screen is missing a Model, View, or Controller
+ */
 public class ScreenMissingPartsException extends Exception {
     public ScreenMissingPartsException() {
         super();

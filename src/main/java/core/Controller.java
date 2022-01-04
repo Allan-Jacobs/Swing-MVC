@@ -22,30 +22,39 @@ public abstract class Controller {
 
     /**
      * This should be used for initialization logic.
-     * This includes binding event listeners, and loading in data
+     * This includes binding event listeners, and loading in data.
      *
-     * @param nav the navigator (change screens)
+     * @param nav the navigator (allow controller to change to a different <code>Screen</code>)
      */
     abstract protected void onInit(Navigator nav);
 
     /**
-     * This should be used to clean up after your controller has run.
+     * This should be used to clean up after your controller is done with (navigated to a new <code>Screen</code>).
      */
     abstract protected void onCleanup();
 
     /**
-     * Get the view for the runner.GUI to render it.
+     * Get the view for <code>runner.GUI</code> to render it.
      *
      * @return the controllers view
+     * @see runner.GUI
      */
     public View getView() {
         return view;
     }
 
+    /**
+     * An internal delegate for the <code>onInit</code> method.
+     *
+     * @param nav the navigator to be passed to the controller
+     */
     public void init(Navigator nav) {
         onInit(nav);
     }
 
+    /**
+     * An internal delegate for the <code>onClose</code> method.
+     */
     public void cleanup() {
         onCleanup();
     }
