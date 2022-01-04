@@ -1,6 +1,6 @@
 package runner;
 
-public class DuplicateScreenException extends Exception {
+public class DuplicateScreenException extends RuntimeException {
 
     public DuplicateScreenException() {
         super();
