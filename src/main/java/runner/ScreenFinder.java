@@ -6,6 +6,7 @@ import core.Model;
 import core.View;
 import org.reflections.Reflections;
 import util.AnnotationFinder;
+import util.ReflectionsServiceImpl;
 import util.Tuple;
 
 import java.util.ArrayList;
@@ -30,7 +31,7 @@ public class ScreenFinder {
         // name: Model, View, Controller
         Map<String, Tuple<Class<? extends Model>, Class<? extends View>, Class<? extends Controller>>> mvc = new HashMap<>();
 
-        AnnotationFinder.find(MVC.class, (clazz) -> {
+        new AnnotationFinder(new ReflectionsServiceImpl()).find(MVC.class, (clazz) -> {
             String key = clazz.getAnnotation(MVC.class).value();
             Tuple<Class<? extends Model>, Class<? extends View>, Class<? extends Controller>> v = mvc.getOrDefault(key, new Tuple<>(null, null, null));
 

@@ -1,7 +1,5 @@
 package util;
 
-import org.reflections.Reflections;
-
 import java.lang.annotation.Annotation;
 import java.util.Set;
 import java.util.function.Consumer;
@@ -10,6 +8,17 @@ import java.util.function.Consumer;
  * A class to find Annotations based on their runtime class.
  */
 public class AnnotationFinder {
+    private final ReflectionsService reflectionsService;
+
+    /**
+     * Create a AnnotationFinder
+     *
+     * @param service a service wrapper around reflections
+     */
+    public AnnotationFinder(ReflectionsService service) {
+        reflectionsService = service;
+    }
+
     /**
      * Find annotations in classpath
      * The class needs to have <code>@Retention(RetentionPolicy.RUNTIME)</code> for it to be found.
@@ -19,10 +28,9 @@ public class AnnotationFinder {
      * @see runner.ScreenFinder
      * @see annotations.MVC
      */
-    public static <T extends Annotation> void find(Class<? extends Annotation> annotation, Consumer<Class<?>> forEach) {
-        Reflections reflections = new Reflections("");
+    public <T extends Annotation> void find(Class<? extends Annotation> annotation, Consumer<Class<?>> forEach) {
 
-        Set<Class<?>> annotatedClasses = reflections.getTypesAnnotatedWith(annotation);
+        Set<Class<?>> annotatedClasses = reflectionsService.getTypesAnnotatedWith(annotation);
 
         for (Class<?> annotatedClass : annotatedClasses) {
             forEach.accept(annotatedClass);
