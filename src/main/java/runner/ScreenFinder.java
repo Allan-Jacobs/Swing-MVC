@@ -4,7 +4,6 @@ import annotations.MVC;
 import core.Controller;
 import core.Model;
 import core.View;
-import org.reflections.Reflections;
 import util.AnnotationFinder;
 import util.Tuple;
 
@@ -34,7 +33,6 @@ public class ScreenFinder {
      */
     @SuppressWarnings("unchecked")
     public ScreenCreator<?, ?, ?>[] find() throws ScreenMissingPartsException, DuplicateScreenException {
-        Reflections reflections = new Reflections("");
         // name: Model, View, Controller
         Map<String, Tuple<Class<? extends Model>, Class<? extends View>, Class<? extends Controller>>> mvc = new HashMap<>();
 
