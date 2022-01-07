@@ -14,7 +14,7 @@ import java.util.Map;
 /**
  * A class to manage all MVC systems and display them to screen.
  */
-public final class GUI extends JFrame {
+public class GUI extends JFrame {
     private final Map<String, ScreenCreator<?, ?, ?>> screens = new HashMap<>();
     private Screen currentScreen = null;
 
