@@ -9,7 +9,7 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <name>Swing MVC</name>
-    <description>An MVC Framework for Java Swing</description>
+    <description>A Lightweight MVC Framework for Java Swing</description>
     <packaging>jar</packaging>
 
     <dependencies>
