@@ -21,9 +21,11 @@ import java.util.Map;
 public class ScreenFinder {
 
     /**
-     * Validates that all the classes make MVC Groups (no missing parts / duplicates), and returns them as screen creators.
+     * Finds Models, Views, and Controllers annotated with @MVC, and returns them as screen creators.
      *
      * @return the list of screen creators
+     * @throws ScreenMissingPartsException the screen is missing a Model, View, or Controller
+     * @throws DuplicateScreenException    there is more than one of the same Model, View Or Controller
      */
     @SuppressWarnings("unchecked")
     public static ScreenCreator<?, ?, ?>[] find() throws ScreenMissingPartsException, DuplicateScreenException {

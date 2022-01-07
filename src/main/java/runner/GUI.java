@@ -62,7 +62,8 @@ public final class GUI extends JFrame {
      * Switch to the specified screen, or if it doesn't exist, do nothing.
      * This method is used by navigator to change screens.
      *
-     * @param name the name of the screen to switch to
+     * @param name     the name of the screen to switch to
+     * @param metadata metadata passed to the next screen's model
      * @see Navigator
      */
     public void switchTo(String name, Object metadata) {

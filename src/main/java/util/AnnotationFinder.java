@@ -24,7 +24,8 @@ public class AnnotationFinder {
      * The class needs to have <code>@Retention(RetentionPolicy.RUNTIME)</code> for it to be found.
      *
      * @param annotation the annotation class to look for
-     * @param forEach    the function applied to each class: (Class<?> clazz) -> void
+     * @param forEach    the function applied to each class: {@code (Class<?> clazz) -> void}
+     * @param <T>        the type of annotation
      * @see runner.ScreenFinder
      * @see annotations.MVC
      */
