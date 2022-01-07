@@ -3,9 +3,9 @@ package util;
 import annotations.MVC;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.mockito.Mockito.mock;
@@ -19,11 +19,9 @@ class AnnotationFinderTest {
 
         AnnotationFinder finder = new AnnotationFinder(mocked);
 
-        ArrayList<Class<?>> calls = new ArrayList<>();
+        List<Class<?>> list = finder.find(MVC.class);
 
-        finder.find(MVC.class, calls::add);
-
-        assertArrayEquals(new Class<?>[]{FakeAnnotatedClass.class}, calls.toArray(new Class<?>[0]));
+        assertArrayEquals(new Class<?>[]{FakeAnnotatedClass.class}, list.toArray(new Class<?>[0]));
     }
 
     private static class FakeAnnotatedClass {

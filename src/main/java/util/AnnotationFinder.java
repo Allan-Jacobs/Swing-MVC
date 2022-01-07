@@ -1,8 +1,9 @@
 package util;
 
 import java.lang.annotation.Annotation;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
-import java.util.function.Consumer;
 
 /**
  * A class to find Annotations based on their runtime class.
@@ -24,17 +25,14 @@ public class AnnotationFinder {
      * The class needs to have <code>@Retention(RetentionPolicy.RUNTIME)</code> for it to be found.
      *
      * @param annotation the annotation class to look for
-     * @param forEach    the function applied to each class: {@code (Class<?> clazz) -> void}
      * @param <T>        the type of annotation
      * @see runner.ScreenFinder
      * @see annotations.MVC
      */
-    public <T extends Annotation> void find(Class<? extends Annotation> annotation, Consumer<Class<?>> forEach) {
+    public <T extends Annotation> List<Class<?>> find(Class<? extends Annotation> annotation) {
 
         Set<Class<?>> annotatedClasses = reflectionsService.getTypesAnnotatedWith(annotation);
 
-        for (Class<?> annotatedClass : annotatedClasses) {
-            forEach.accept(annotatedClass);
-        }
+        return new ArrayList<>(annotatedClasses);
     }
 }

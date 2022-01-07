@@ -38,7 +38,7 @@ public class ScreenFinder {
         // name: Model, View, Controller
         Map<String, Tuple<Class<? extends Model>, Class<? extends View>, Class<? extends Controller>>> mvc = new HashMap<>();
 
-        finder.find(MVC.class, (clazz) -> {
+        finder.find(MVC.class).forEach((clazz) -> {
             String key = clazz.getAnnotation(MVC.class).value();
             Tuple<Class<? extends Model>, Class<? extends View>, Class<? extends Controller>> v = mvc.getOrDefault(key, new Tuple<>(null, null, null));
 
