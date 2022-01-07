@@ -6,7 +6,6 @@ import core.Model;
 import core.View;
 import org.reflections.Reflections;
 import util.AnnotationFinder;
-import util.ReflectionsServiceImpl;
 import util.Tuple;
 
 import java.util.ArrayList;
@@ -19,6 +18,12 @@ import java.util.Map;
  * @see GUI
  */
 public class ScreenFinder {
+    private final AnnotationFinder finder;
+
+    public ScreenFinder(AnnotationFinder annotationFinder) {
+        finder = annotationFinder;
+    }
+
 
     /**
      * Finds Models, Views, and Controllers annotated with @MVC, and returns them as screen creators.
@@ -28,12 +33,12 @@ public class ScreenFinder {
      * @throws DuplicateScreenException    there is more than one of the same Model, View Or Controller
      */
     @SuppressWarnings("unchecked")
-    public static ScreenCreator<?, ?, ?>[] find() throws ScreenMissingPartsException, DuplicateScreenException {
+    public ScreenCreator<?, ?, ?>[] find() throws ScreenMissingPartsException, DuplicateScreenException {
         Reflections reflections = new Reflections("");
         // name: Model, View, Controller
         Map<String, Tuple<Class<? extends Model>, Class<? extends View>, Class<? extends Controller>>> mvc = new HashMap<>();
 
-        new AnnotationFinder(new ReflectionsServiceImpl()).find(MVC.class, (clazz) -> {
+        finder.find(MVC.class, (clazz) -> {
             String key = clazz.getAnnotation(MVC.class).value();
             Tuple<Class<? extends Model>, Class<? extends View>, Class<? extends Controller>> v = mvc.getOrDefault(key, new Tuple<>(null, null, null));
 

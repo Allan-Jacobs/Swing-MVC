@@ -3,7 +3,9 @@ package runner;
 import core.Controller;
 import core.Model;
 import core.View;
+import util.AnnotationFinder;
 import util.Navigator;
+import util.ReflectionsServiceImpl;
 
 import javax.swing.*;
 import java.awt.*;
@@ -30,7 +32,7 @@ public class GUI extends JFrame {
         GUI gui = new GUI();
 
         try {
-            Arrays.stream(ScreenFinder.find()).forEach(gui::addScreen);
+            Arrays.stream(new ScreenFinder(new AnnotationFinder(new ReflectionsServiceImpl())).find()).forEach(gui::addScreen);
         } catch (ScreenMissingPartsException | DuplicateScreenException e) {
             e.printStackTrace();
         }
