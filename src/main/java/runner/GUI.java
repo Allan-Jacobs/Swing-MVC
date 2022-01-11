@@ -17,7 +17,6 @@ import java.util.Map;
  * A class to manage all MVC systems and display them to screen.
  */
 public class GUI extends JFrame {
-    private final Map<String, ScreenCreator<?, ?, ?>> screens = new HashMap<>();
     private Screen currentScreen = null;
 
     private GUI() {
@@ -31,33 +30,9 @@ public class GUI extends JFrame {
     public static void createAndStart() {
         GUI gui = new GUI();
 
-        try {
-            Arrays.stream(new ScreenFinder(new AnnotationFinder(new ReflectionsServiceImpl())).find()).forEach(gui::addScreen);
-        } catch (ScreenMissingPartsException | DuplicateScreenException e) {
-            e.printStackTrace();
-        }
+        ScreenRegistry.getInstance().addScreensFromClassPath();
 
         gui.setVisible(true);
-    }
-
-    /**
-     * A method to register a <code>runner.Screen</code> with this gui.
-     *
-     * @param screen the screen to register
-     * @param <M>    the class of the model, eg <code>core.Model.class</code>
-     * @param <V>    the class of the view, eg <code>core.View.class</code>
-     * @param <C>    the class of the controller, eg <code>core.Controller.class</code>
-     */
-    public <M extends Class<? extends Model>,
-            V extends Class<? extends View>,
-            C extends Class<? extends Controller>> void addScreen(ScreenCreator<M, V, C> screen) {
-        if (!screens.containsKey(screen.getName())) {
-            screens.put(screen.getName(), screen);
-        }
-        if (currentScreen == null) // if it's the first screen, switch to it
-        {
-            switchTo(screen.getName(), null);
-        }
     }
 
     /**
@@ -69,7 +44,7 @@ public class GUI extends JFrame {
      * @see Navigator
      */
     public void switchTo(String name, Object metadata) {
-        if (!screens.containsKey(name)) return;
+        if (!ScreenRegistry.getInstance().containsScreen(name)) return;
 
         // first time, no cleanup needed
         if (currentScreen != null) {
@@ -78,7 +53,7 @@ public class GUI extends JFrame {
         }
 
         // set new screen
-        currentScreen = screens.get(name).create();
+        currentScreen = ScreenRegistry.getInstance().createFromName(name);
 
         // initialize model with initial state
         currentScreen.getModel().init(metadata);
@@ -87,7 +62,7 @@ public class GUI extends JFrame {
         currentScreen.getView().create(currentScreen.getModel());
 
         // initialize controller
-        currentScreen.getController().init(new Navigator(this));
+        currentScreen.getController().init(new Navigator(this, ScreenRegistry.getInstance()));
 
         // switch view
         this.getContentPane().removeAll();
@@ -97,18 +72,4 @@ public class GUI extends JFrame {
         this.getContentPane().revalidate();
         this.getContentPane().repaint();
     }
-
-    /**
-     * A method to see if the runner.GUI contains the specified screen.
-     * This method is used by navigator to check for screen existence.
-     *
-     * @param name the name of the screen creator
-     * @return if the gui has a screen creator with that name
-     * @see Navigator
-     */
-    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
-    public boolean containsScreen(String name) {
-        return screens.containsKey(name);
-    }
-
 }

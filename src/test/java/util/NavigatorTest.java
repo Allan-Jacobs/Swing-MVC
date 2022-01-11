@@ -2,21 +2,23 @@ package util;
 
 import org.junit.jupiter.api.Test;
 import runner.GUI;
+import runner.ScreenRegistry;
 
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertThrowsExactly;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 class NavigatorTest {
 
     @Test
     void whenNavigateWithScreenName_shouldCallSwitchToInGUIWithScreenNameUnlessScreenDoesNotExist() {
+
         GUI gui = mock(GUI.class);
+        ScreenRegistry registry = mock(ScreenRegistry.class);
 
-        when(gui.containsScreen(anyString())).thenReturn(false);
-        when(gui.containsScreen("TEST")).thenReturn(true);
+        when(registry.containsScreen(anyString())).thenReturn(false);
+        when(registry.containsScreen("TEST")).thenReturn(true);
 
-        Navigator nav = new Navigator(gui);
+        Navigator nav = new Navigator(gui, registry);
 
         assertDoesNotThrow(() -> nav.navigate("TEST"));
         verify(gui).switchTo(eq("TEST"), eq(null));
@@ -29,12 +31,15 @@ class NavigatorTest {
 
     @Test
     void whenNavigatedWithMetadata_shouldBePassedToGUISwitchTo() {
+        ScreenRegistry registry = mock(ScreenRegistry.class);
         GUI gui = mock(GUI.class);
 
-        when(gui.containsScreen(anyString())).thenReturn(false);
-        when(gui.containsScreen("TEST")).thenReturn(true);
+        when(registry.containsScreen(anyString())).thenReturn(false);
+        when(registry.containsScreen("TEST")).thenReturn(true);
 
-        Navigator nav = new Navigator(gui);
+
+
+        Navigator nav = new Navigator(gui, registry);
 
         assertDoesNotThrow(() -> nav.navigate("TEST", "Some Text"));
         verify(gui).switchTo(eq("TEST"), eq("Some Text"));
