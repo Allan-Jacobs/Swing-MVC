@@ -25,7 +25,7 @@ public class Navigator {
      * @see annotations.MVC
      */
     public void navigate(String to) {
-        if (registry.containsScreen(to))
+        if (!registry.containsScreen(to))
             throw new NavigatorException("Could not navigate: screen \"" + to + "\" does not exist");
         gui.switchTo(to, null);
     }
@@ -40,7 +40,7 @@ public class Navigator {
      * @see GUI
      */
     public void navigate(String to, Object metadata) {
-        if (registry.containsScreen(to))
+        if (!registry.containsScreen(to))
             throw new NavigatorException("Could not navigate: screen \"" + to + "\" does not exist");
         gui.switchTo(to, metadata);
     }
