@@ -67,8 +67,9 @@ public class ScreenRegistry
     }
 
     /**
-     * create a new ScreenRegistry if it doesnt exist, or return the current one.
-     * @return
+     * create a new ScreenRegistry if it doesn't exist, or return the current one.
+     *
+     * @return the current ScreenRegistry
      */
     public static ScreenRegistry getInstance() {
         if(registry == null) {
