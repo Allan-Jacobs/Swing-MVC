@@ -6,6 +6,8 @@ package core;
 public abstract class Model {
     /**
      * This method should initialize the model with a specified state
+     *
+     * @param state the object (or null) to be passed to the next screens model
      */
     public abstract void init(Object state);
 }

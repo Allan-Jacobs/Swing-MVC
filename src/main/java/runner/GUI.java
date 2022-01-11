@@ -3,7 +3,9 @@ package runner;
 import core.Controller;
 import core.Model;
 import core.View;
+import util.AnnotationFinder;
 import util.Navigator;
+import util.ReflectionsServiceImpl;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,7 +16,7 @@ import java.util.Map;
 /**
  * A class to manage all MVC systems and display them to screen.
  */
-public final class GUI extends JFrame {
+public class GUI extends JFrame {
     private final Map<String, ScreenCreator<?, ?, ?>> screens = new HashMap<>();
     private Screen currentScreen = null;
 
@@ -30,7 +32,7 @@ public final class GUI extends JFrame {
         GUI gui = new GUI();
 
         try {
-            Arrays.stream(ScreenFinder.find()).forEach(gui::addScreen);
+            Arrays.stream(new ScreenFinder(new AnnotationFinder(new ReflectionsServiceImpl())).find()).forEach(gui::addScreen);
         } catch (ScreenMissingPartsException | DuplicateScreenException e) {
             e.printStackTrace();
         }
@@ -62,7 +64,8 @@ public final class GUI extends JFrame {
      * Switch to the specified screen, or if it doesn't exist, do nothing.
      * This method is used by navigator to change screens.
      *
-     * @param name the name of the screen to switch to
+     * @param name     the name of the screen to switch to
+     * @param metadata metadata passed to the next screen's model
      * @see Navigator
      */
     public void switchTo(String name, Object metadata) {
