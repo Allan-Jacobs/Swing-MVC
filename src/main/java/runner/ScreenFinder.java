@@ -27,7 +27,7 @@ public class ScreenFinder {
     /**
      * Finds Models, Views, and Controllers annotated with @MVC, and returns them as screen creators.
      *
-     * @return the list of screen creators
+     * @return the array of screen creators
      * @throws ScreenMissingPartsException the screen is missing a Model, View, or Controller
      * @throws DuplicateScreenException    there is more than one of the same Model, View Or Controller
      */

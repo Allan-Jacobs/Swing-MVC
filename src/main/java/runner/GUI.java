@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * A class to manage all MVC systems and display them to screen.
+ * A class to display views to the screen.
  */
 public class GUI extends JFrame {
 

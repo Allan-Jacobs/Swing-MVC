@@ -28,9 +28,9 @@ public class ScreenRegistry {
      * A method to register a <code>runner.Screen</code>.
      *
      * @param screen the screen to register
-     * @param <M>    the class of the model, eg <code>core.Model.class</code>
-     * @param <V>    the class of the view, eg <code>core.View.class</code>
-     * @param <C>    the class of the controller, eg <code>core.Controller.class</code>
+     * @param <M>    the class of the model, extends <code>core.Model</code>
+     * @param <V>    the class of the view, extends <code>core.View</code>
+     * @param <C>    the class of the controller, extends <code>core.Controller</code>
      */
     public <M extends Class<? extends Model>,
             V extends Class<? extends View>,
