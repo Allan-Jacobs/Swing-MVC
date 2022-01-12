@@ -10,7 +10,11 @@ import util.ReflectionsServiceImpl;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
+/**
+ * A registry of every
+ */
 public class ScreenRegistry
 {
     private static ScreenRegistry registry = null;
@@ -59,6 +63,7 @@ public class ScreenRegistry
 
     /**
      * Call <code>Create()</code> on the screen creator with the specified name.
+     *
      * @param name the name of the screen creator
      * @return the result of <code>Create()</code>
      */
@@ -67,12 +72,28 @@ public class ScreenRegistry
     }
 
     /**
+     * Call <code>Create()</code> on the first found screen creator.
+     * Not guaranteed to be the same screen creator when run multiple times.
+     * This will be fixed in the future.
+     *
+     * @return the result of <code>Create()</code>
+     * @throws NoScreensException when there are no screens in the registry
+     */
+    public Screen createEntryPoint() throws NoScreensException {
+        Optional<Map.Entry<String, ScreenCreator<?, ?, ?>>> maybeScreen = screens.entrySet().stream().findFirst();
+        if (!maybeScreen.isPresent()) {
+            throw new NoScreensException("No Screens exist");
+        }
+        return maybeScreen.get().getValue().create();
+    }
+
+    /**
      * create a new ScreenRegistry if it doesn't exist, or return the current one.
      *
      * @return the current ScreenRegistry
      */
     public static ScreenRegistry getInstance() {
-        if(registry == null) {
+        if (registry == null) {
             registry = new ScreenRegistry();
         }
         return registry;

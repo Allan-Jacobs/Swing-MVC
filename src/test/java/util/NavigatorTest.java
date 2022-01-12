@@ -1,10 +1,12 @@
 package util;
 
 import org.junit.jupiter.api.Test;
-import runner.GUI;
+import runner.Screen;
+import runner.ScreenLifecycleManager;
 import runner.ScreenRegistry;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertThrowsExactly;
 import static org.mockito.Mockito.*;
 
 class NavigatorTest {
@@ -12,36 +14,49 @@ class NavigatorTest {
     @Test
     void whenNavigateWithScreenName_shouldCallSwitchToInGUIWithScreenNameUnlessScreenDoesNotExist() {
 
-        GUI gui = mock(GUI.class);
+        ScreenLifecycleManager manager = mock(ScreenLifecycleManager.class);
+
+        Screen fakeScreen = mock(Screen.class);
+
+        when(fakeScreen.getName()).thenReturn("TEST");
+
         ScreenRegistry registry = mock(ScreenRegistry.class);
 
         when(registry.containsScreen(anyString())).thenReturn(false);
         when(registry.containsScreen("TEST")).thenReturn(true);
 
-        Navigator nav = new Navigator(gui, registry);
+        when(registry.createFromName("TEST")).thenReturn(fakeScreen);
+
+        Navigator nav = new Navigator(manager, registry);
 
         assertDoesNotThrow(() -> nav.navigate("TEST"));
-        verify(gui).switchTo(eq("TEST"), eq(null));
+        verify(manager).switchTo(argThat(screen -> screen != null && "TEST".equals(screen.getName())), eq(null));
 
-        reset(gui);
+        reset(manager);
 
         assertThrowsExactly(NavigatorException.class, () -> nav.navigate("NOT A SCREEN"));
-        verify(gui, never()).switchTo(any(), any());
+        verify(manager, never()).switchTo(any(), any());
     }
 
     @Test
     void whenNavigatedWithMetadata_shouldBePassedToGUISwitchTo() {
+
+        ScreenLifecycleManager manager = mock(ScreenLifecycleManager.class);
+
+        Screen fakeScreen = mock(Screen.class);
+
+        when(fakeScreen.getName()).thenReturn("TEST");
+
         ScreenRegistry registry = mock(ScreenRegistry.class);
-        GUI gui = mock(GUI.class);
 
         when(registry.containsScreen(anyString())).thenReturn(false);
         when(registry.containsScreen("TEST")).thenReturn(true);
 
+        when(registry.createFromName("TEST")).thenReturn(fakeScreen);
 
-
-        Navigator nav = new Navigator(gui, registry);
+        Navigator nav = new Navigator(manager, registry);
 
         assertDoesNotThrow(() -> nav.navigate("TEST", "Some Text"));
-        verify(gui).switchTo(eq("TEST"), eq("Some Text"));
+        verify(manager).switchTo(argThat(screen -> "TEST".equals(screen.getName())), eq("Some Text"));
     }
 }
