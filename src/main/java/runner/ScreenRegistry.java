@@ -13,14 +13,16 @@ import java.util.Map;
 import java.util.Optional;
 
 /**
- * A registry of every
+ * A registry of every screen for the application.
  */
-public class ScreenRegistry
-{
+public class ScreenRegistry {
     private static ScreenRegistry registry = null;
+    private final AnnotationFinder finder;
     private final Map<String, ScreenCreator<?, ?, ?>> screens = new HashMap<>();
 
-    private ScreenRegistry() {}
+    private ScreenRegistry(AnnotationFinder annotationFinder) {
+        finder = annotationFinder;
+    }
 
     /**
      * A method to register a <code>runner.Screen</code>.
@@ -39,14 +41,15 @@ public class ScreenRegistry
     }
 
     /**
-     * Adds all the screens with the <code>@MVC</code> annotation in the classpath to the registry
+     * create a new ScreenRegistry if it doesn't exist, or return the current one.
+     *
+     * @return the current ScreenRegistry
      */
-    public void addScreensFromClassPath() {
-        try {
-            Arrays.stream(new ScreenFinder(new AnnotationFinder(new ReflectionsServiceImpl())).find()).forEach(this::addScreen);
-        } catch (ScreenMissingPartsException | DuplicateScreenException e) {
-            e.printStackTrace();
+    public static ScreenRegistry getInstance() {
+        if (registry == null) {
+            registry = new ScreenRegistry(new AnnotationFinder(new ReflectionsServiceImpl()));
         }
+        return registry;
     }
 
     /**
@@ -88,14 +91,13 @@ public class ScreenRegistry
     }
 
     /**
-     * create a new ScreenRegistry if it doesn't exist, or return the current one.
-     *
-     * @return the current ScreenRegistry
+     * Adds all the screens with the <code>@MVC</code> annotation in the classpath to the registry
      */
-    public static ScreenRegistry getInstance() {
-        if (registry == null) {
-            registry = new ScreenRegistry();
+    public void addScreensFromClassPath() {
+        try {
+            Arrays.stream(new ScreenFinder(finder).find()).forEach(this::addScreen);
+        } catch (ScreenMissingPartsException | DuplicateScreenException e) {
+            e.printStackTrace();
         }
-        return registry;
     }
 }
