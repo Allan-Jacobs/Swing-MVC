@@ -11,29 +11,9 @@ import java.awt.*;
  */
 public class GUI extends JFrame {
 
-    private GUI() {
+    GUI() {
         this.setSize(1650, 1000);
         this.getContentPane().setLayout(new BorderLayout());
-    }
-
-    /**
-     * Create the gui and start it
-     */
-    public static void createAndStart() {
-        GUI gui = new GUI();
-
-        ScreenRegistry.getInstance().addScreensFromClassPath();
-
-        ScreenLifecycleManager manager = new ScreenLifecycleManager(gui);
-
-        try {
-            Screen entryPoint = ScreenRegistry.getInstance().createEntryPoint();
-            manager.switchTo(entryPoint, null);
-        } catch (NoScreensException e) {
-            throw new RuntimeException(e);
-        }
-
-        gui.setVisible(true);
     }
 
     /**
