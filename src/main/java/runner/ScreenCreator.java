@@ -7,7 +7,8 @@ import core.View;
 import java.lang.reflect.InvocationTargetException;
 
 /**
- * This class encapsulates a model, view, and controller
+ * This class encapsulates a model, view, and controller class.
+ * This creates a <code>Screen</code> on demand with instances of the model, view and controller.
  *
  * @param <ModelClass>      the class of the model, eg <code>core.Model.class</code>
  * @param <ViewClass>       the class of the view, eg <code>core.View.class</code>

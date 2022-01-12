@@ -1,6 +1,8 @@
 package util;
 
 import runner.GUI;
+import runner.ScreenLifecycleManager;
+import runner.ScreenRegistry;
 
 /**
  * A Class to allow easy navigation within controllers.
@@ -9,10 +11,12 @@ import runner.GUI;
  * @see core.Controller
  */
 public class Navigator {
-    private final GUI gui;
+    private final ScreenLifecycleManager manager;
+    private final ScreenRegistry registry;
 
-    public Navigator(GUI gui) {
-        this.gui = gui;
+    public Navigator(ScreenLifecycleManager manager, ScreenRegistry registry) {
+        this.manager = manager;
+        this.registry = registry;
     }
 
     /**
@@ -22,9 +26,9 @@ public class Navigator {
      * @see annotations.MVC
      */
     public void navigate(String to) {
-        if (!gui.containsScreen(to))
+        if (!registry.containsScreen(to))
             throw new NavigatorException("Could not navigate: screen \"" + to + "\" does not exist");
-        gui.switchTo(to, null);
+        manager.switchTo(registry.createFromName(to), null);
     }
 
     /**
@@ -37,8 +41,8 @@ public class Navigator {
      * @see GUI
      */
     public void navigate(String to, Object metadata) {
-        if (!gui.containsScreen(to))
+        if (!registry.containsScreen(to))
             throw new NavigatorException("Could not navigate: screen \"" + to + "\" does not exist");
-        gui.switchTo(to, metadata);
+        manager.switchTo(registry.createFromName(to), metadata);
     }
 }

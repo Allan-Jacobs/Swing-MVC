@@ -1,9 +1,9 @@
 package dev;
 
-import runner.GUI;
+import runner.App;
 
 public class All {
     public static void main(String[] args) {
-        GUI.createAndStart();
+        App.createAndStart();
     }
 }
