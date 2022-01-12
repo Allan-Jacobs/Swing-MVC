@@ -1,17 +1,9 @@
 package runner;
 
-import core.Controller;
-import core.Model;
-import core.View;
-import util.AnnotationFinder;
 import util.Navigator;
-import util.ReflectionsServiceImpl;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * A class to manage all MVC systems and display them to screen.
