@@ -30,7 +30,7 @@
     <scm>
         <connection>scm:git:git://github.com/Allan-Jacobs/Swing-MVC.git</connection>
         <developerConnection>scm:git:ssh://github.com:Allan-Jacobs/Swing-MVC.git</developerConnection>
-        <url>http://github.com/simpligility/ossrh-demo/tree/master</url>
+        <url>https://github.com/Allan-Jacobs/Swing-MVC/tree/master</url>
     </scm>
 
     <dependencies>
