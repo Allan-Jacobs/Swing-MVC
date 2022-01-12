@@ -10,7 +10,28 @@
 
     <name>Swing MVC</name>
     <description>A Lightweight MVC Framework for Java Swing</description>
+    <url>https://github.com/Allan-Jacobs/Swing-MVC</url>
     <packaging>jar</packaging>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Allan Jacobs</name>
+            <organizationUrl>https://github.com/Allan-Jacobs/</organizationUrl>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/Allan-Jacobs/Swing-MVC.git</connection>
+        <developerConnection>scm:git:ssh://github.com:Allan-Jacobs/Swing-MVC.git</developerConnection>
+        <url>http://github.com/simpligility/ossrh-demo/tree/master</url>
+    </scm>
 
     <dependencies>
         <dependency>
