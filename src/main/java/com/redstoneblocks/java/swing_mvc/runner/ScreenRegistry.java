@@ -28,10 +28,11 @@ public class ScreenRegistry {
     /**
      * A method to register a <code>runner.Screen</code>.
      *
-     * @param screen the screen to register
-     * @param <M>    the class of the model, extends <code>core.Model</code>
-     * @param <V>    the class of the view, extends <code>core.View</code>
-     * @param <C>    the class of the controller, extends <code>core.Controller</code>
+     * @param screen       the screen to register
+     * @param isEntryPoint true if the screen is the entry point
+     * @param <M>          the class of the model, extends <code>core.Model</code>
+     * @param <V>          the class of the view, extends <code>core.View</code>
+     * @param <C>          the class of the controller, extends <code>core.Controller</code>
      */
     public <M extends Class<? extends Model>,
             V extends Class<? extends View>,
