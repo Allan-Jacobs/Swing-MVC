@@ -10,7 +10,6 @@ import com.redstoneblocks.java.swing_mvc.util.ReflectionsServiceImpl;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 /**
  * A registry of every screen for the application.
@@ -19,7 +18,7 @@ public class ScreenRegistry {
     private static ScreenRegistry registry = null;
     private final AnnotationFinder finder;
     private final Map<String, ScreenCreator<?, ?, ?>> screens = new HashMap<>();
-    private String entryPoint;
+    private String entryPoint = null;
 
     private ScreenRegistry(AnnotationFinder annotationFinder) {
         finder = annotationFinder;
@@ -93,11 +92,10 @@ public class ScreenRegistry {
      * @throws NoScreensException when there are no screens in the registry
      */
     public Screen createEntryPoint() throws NoScreensException {
-        Optional<Map.Entry<String, ScreenCreator<?, ?, ?>>> maybeScreen = screens.entrySet().stream().findFirst();
-        if (!maybeScreen.isPresent()) {
-            throw new NoScreensException("No Screens exist");
-        }
-        return maybeScreen.get().getValue().create();
+        if (entryPoint == null)
+            throw new NoScreensException("No entrypoint defined. use @EntryPoint on your model, view or controller.");
+        return screens.get(entryPoint).create();
+
     }
 
     /**

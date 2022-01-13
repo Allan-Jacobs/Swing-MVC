@@ -20,12 +20,14 @@ class ScreenRegistryTest {
     }
 
     @Test
-    void whenRegistryHasOneScreen_shouldNotThrowNoScreensExceptionWhenUsingCreateEntryPoint() {
+    void whenRegistryHasAnEntryPointDefined_shouldNotThrowNoScreensExceptionWhenUsingCreateEntryPoint() {
         ScreenRegistry registry = ScreenRegistry.getInstance();
 
         ScreenCreator<?, ?, ?> fake = mock(ScreenCreator.class);
 
-        registry.addScreen(fake, false);
+        when(fake.getName()).thenReturn("TEST");
+
+        registry.addScreen(fake, true);
 
         assertDoesNotThrow(() -> {
             Screen screen = registry.createEntryPoint();
