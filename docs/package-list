@@ -1,6 +1,6 @@
-annotations
-core
-dev
-dev.util
+com.redstoneblocks.java.swing_mvc.annotations
+com.redstoneblocks.java.swing_mvc.annotations.core
+com.redstoneblocks.java.swing_mvc.annotations.runner
+com.redstoneblocks.java.swing_mvc.annotations.util
 runner
 util
