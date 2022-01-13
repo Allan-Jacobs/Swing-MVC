@@ -1,4 +1,4 @@
-package com.redstoneblocks.java.swing_mvc.annotations.core;
+package com.redstoneblocks.java.swing_mvc.core;
 
 /**
  * A base class to designate Models for MVC.

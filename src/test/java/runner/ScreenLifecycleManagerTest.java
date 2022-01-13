@@ -1,11 +1,11 @@
 package runner;
 
-import com.redstoneblocks.java.swing_mvc.annotations.core.Controller;
-import com.redstoneblocks.java.swing_mvc.annotations.core.Model;
-import com.redstoneblocks.java.swing_mvc.annotations.core.View;
-import com.redstoneblocks.java.swing_mvc.annotations.runner.GUI;
-import com.redstoneblocks.java.swing_mvc.annotations.runner.Screen;
-import com.redstoneblocks.java.swing_mvc.annotations.runner.ScreenLifecycleManager;
+import com.redstoneblocks.java.swing_mvc.core.Controller;
+import com.redstoneblocks.java.swing_mvc.core.Model;
+import com.redstoneblocks.java.swing_mvc.core.View;
+import com.redstoneblocks.java.swing_mvc.runner.GUI;
+import com.redstoneblocks.java.swing_mvc.runner.Screen;
+import com.redstoneblocks.java.swing_mvc.runner.ScreenLifecycleManager;
 import org.junit.jupiter.api.Test;
 
 import static org.mockito.Mockito.*;

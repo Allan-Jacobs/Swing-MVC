@@ -1,4 +1,4 @@
-package com.redstoneblocks.java.swing_mvc.annotations.util;
+package com.redstoneblocks.java.swing_mvc.util;
 
 /**
  * A utility class for a 4-tuple (immutable)

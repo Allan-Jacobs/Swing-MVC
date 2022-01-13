@@ -1,8 +1,8 @@
-package com.redstoneblocks.java.swing_mvc.annotations.runner;
+package com.redstoneblocks.java.swing_mvc.runner;
 
-import com.redstoneblocks.java.swing_mvc.annotations.core.Controller;
-import com.redstoneblocks.java.swing_mvc.annotations.core.Model;
-import com.redstoneblocks.java.swing_mvc.annotations.core.View;
+import com.redstoneblocks.java.swing_mvc.core.Controller;
+import com.redstoneblocks.java.swing_mvc.core.Model;
+import com.redstoneblocks.java.swing_mvc.core.View;
 
 import java.lang.reflect.InvocationTargetException;
 

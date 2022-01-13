@@ -1,7 +1,7 @@
-package com.redstoneblocks.java.swing_mvc.annotations.core;
+package com.redstoneblocks.java.swing_mvc.core;
 
-import com.redstoneblocks.java.swing_mvc.annotations.runner.GUI;
-import com.redstoneblocks.java.swing_mvc.annotations.util.Navigator;
+import com.redstoneblocks.java.swing_mvc.runner.GUI;
+import com.redstoneblocks.java.swing_mvc.util.Navigator;
 
 /**
  * A base core.Controller class for MVC.

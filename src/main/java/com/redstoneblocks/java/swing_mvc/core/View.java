@@ -1,4 +1,4 @@
-package com.redstoneblocks.java.swing_mvc.annotations.core;
+package com.redstoneblocks.java.swing_mvc.core;
 
 import javax.swing.*;
 

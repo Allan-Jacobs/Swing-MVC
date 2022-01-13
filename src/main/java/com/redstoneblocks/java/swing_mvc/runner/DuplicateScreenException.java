@@ -1,4 +1,4 @@
-package com.redstoneblocks.java.swing_mvc.annotations.runner;
+package com.redstoneblocks.java.swing_mvc.runner;
 
 /**
  * This exception is called when two Models, two Views, or two Controllers have the same @MVC() annotation.

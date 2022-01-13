@@ -1,4 +1,4 @@
-package com.redstoneblocks.java.swing_mvc.annotations.runner;
+package com.redstoneblocks.java.swing_mvc.runner;
 
 /**
  * An exception if a screen does not have all of its parts.

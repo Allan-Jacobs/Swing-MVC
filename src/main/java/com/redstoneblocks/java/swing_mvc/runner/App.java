@@ -1,4 +1,4 @@
-package com.redstoneblocks.java.swing_mvc.annotations.runner;
+package com.redstoneblocks.java.swing_mvc.runner;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;

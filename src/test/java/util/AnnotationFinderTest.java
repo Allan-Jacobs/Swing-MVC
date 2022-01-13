@@ -1,8 +1,8 @@
 package util;
 
-import com.redstoneblocks.java.swing_mvc.annotations.MVC;
-import com.redstoneblocks.java.swing_mvc.annotations.util.AnnotationFinder;
-import com.redstoneblocks.java.swing_mvc.annotations.util.ReflectionsServiceImpl;
+import com.redstoneblocks.java.swing_mvc.MVC;
+import com.redstoneblocks.java.swing_mvc.util.AnnotationFinder;
+import com.redstoneblocks.java.swing_mvc.util.ReflectionsServiceImpl;
 import org.junit.jupiter.api.Test;
 
 import java.util.Collections;

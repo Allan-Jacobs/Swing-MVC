@@ -1,10 +1,10 @@
 package util;
 
-import com.redstoneblocks.java.swing_mvc.annotations.runner.Screen;
-import com.redstoneblocks.java.swing_mvc.annotations.runner.ScreenLifecycleManager;
-import com.redstoneblocks.java.swing_mvc.annotations.runner.ScreenRegistry;
-import com.redstoneblocks.java.swing_mvc.annotations.util.Navigator;
-import com.redstoneblocks.java.swing_mvc.annotations.util.NavigatorException;
+import com.redstoneblocks.java.swing_mvc.runner.Screen;
+import com.redstoneblocks.java.swing_mvc.runner.ScreenLifecycleManager;
+import com.redstoneblocks.java.swing_mvc.runner.ScreenRegistry;
+import com.redstoneblocks.java.swing_mvc.util.Navigator;
+import com.redstoneblocks.java.swing_mvc.util.NavigatorException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;

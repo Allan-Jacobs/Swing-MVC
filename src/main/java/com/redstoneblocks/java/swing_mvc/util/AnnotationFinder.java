@@ -1,7 +1,7 @@
-package com.redstoneblocks.java.swing_mvc.annotations.util;
+package com.redstoneblocks.java.swing_mvc.util;
 
-import com.redstoneblocks.java.swing_mvc.annotations.MVC;
-import com.redstoneblocks.java.swing_mvc.annotations.runner.ScreenFinder;
+import com.redstoneblocks.java.swing_mvc.MVC;
+import com.redstoneblocks.java.swing_mvc.runner.ScreenFinder;
 
 import java.lang.annotation.Annotation;
 import java.util.ArrayList;

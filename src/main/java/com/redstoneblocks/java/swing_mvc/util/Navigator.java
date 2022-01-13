@@ -1,10 +1,10 @@
-package com.redstoneblocks.java.swing_mvc.annotations.util;
+package com.redstoneblocks.java.swing_mvc.util;
 
-import com.redstoneblocks.java.swing_mvc.annotations.MVC;
-import com.redstoneblocks.java.swing_mvc.annotations.core.Controller;
-import com.redstoneblocks.java.swing_mvc.annotations.runner.GUI;
-import com.redstoneblocks.java.swing_mvc.annotations.runner.ScreenLifecycleManager;
-import com.redstoneblocks.java.swing_mvc.annotations.runner.ScreenRegistry;
+import com.redstoneblocks.java.swing_mvc.MVC;
+import com.redstoneblocks.java.swing_mvc.core.Controller;
+import com.redstoneblocks.java.swing_mvc.runner.GUI;
+import com.redstoneblocks.java.swing_mvc.runner.ScreenLifecycleManager;
+import com.redstoneblocks.java.swing_mvc.runner.ScreenRegistry;
 
 /**
  * A Class to allow easy navigation within controllers.
