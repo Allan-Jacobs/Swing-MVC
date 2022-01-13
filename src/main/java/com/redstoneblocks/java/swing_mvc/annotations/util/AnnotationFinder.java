@@ -29,6 +29,7 @@ public class AnnotationFinder {
      *
      * @param annotation the annotation class to look for
      * @param <T>        the type of annotation
+     * @return the list of <code>Classes</code>
      * @see ScreenFinder
      * @see MVC
      */
