@@ -139,6 +139,61 @@ import java.awt.event.ActionEvent;
 @EntryPoint
 // we annotate the controller with @MVC("EXAMPLE") to tell
 // Swing-MVC that it belongs to the "EXAMPLE" screen.
+@MVC("EXAMPLE")
+public class ExampleController extends Controller {
+    // these are simply the model and view,
+    // but casted already, so you do not need
+    // to cast them everytime you use them
+    ExampleView exampleView;
+    ExampleModel exampleModel;
+    
+    // Navagator is a utility class for changing
+    // screens (navigating). It also allows you
+    // to pass data to the next screen's Model.
+    // you may store it in a variable.
+    @Override
+    public void init(Navigator nav) {
+        // here we create action listeners for the buttons
+        // we increment or decrement count, and then update the label
+        exampleView.decrementButton.addActionListener(e -> {
+            exampleModel.count--;
+            exampleView.countLabel.setText(String.valueOf(exampleModel.count));
+        });
+        exampleView.incrementButton.addActionListener(e -> {
+            exampleModel.count++;
+            exampleView.countLabel.setText(String.valueOf(exampleModel.count));
+        });
+    }
+    
+    // this method is run before navigating to cleanup any resources
+    // that the controller is using, such as network connections or
+    // unsaved files. since we don't need to cleanup anything,
+    // we keep it empty
+    @Override
+    public void cleanup() {}
+}
+```
 
+#### Running the app
+The App class is what finds and runs your screens. All you need to do is
+run the App#createAndStart method in your application's entry point.
 
 ```
+// Run.java
+
+// import App class
+import com.redstoneblocks.java.swing_mvc.runner.App;
+
+public class Run {
+    public static void main(String[] args) {
+        // this runs your app
+        App.createAndStart();
+    }
+}
+```
+
+Compile and run your app. You will see a window popup with 2 buttons and a label,
+and you can increment or decrement the count.
+
+NOTE: currently there is a bug that will leave the app running after you close the window.
+This will be fixed in the next version, and will default to EXIT_ON_CLOSE behavoir.
