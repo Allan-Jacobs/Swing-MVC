@@ -1,20 +1,17 @@
 package com.redstoneblocks.java.swing_mvc.annotations.util;
 
 /**
- * A utility class for a 3-tuple (immutable)
+ * A utility class for a 2-tuple (immutable)
  *
  * @param <T1> first type
  * @param <T2> second type
- * @param <T3> third type
  */
-public class Tuple<T1, T2, T3> {
+public class Tuple2<T1, T2> {
     public final T1 first;
     public final T2 second;
-    public final T3 third;
 
-    public Tuple(T1 first, T2 second, T3 third) {
+    public Tuple2(T1 first, T2 second) {
         this.first = first;
         this.second = second;
-        this.third = third;
     }
 }
