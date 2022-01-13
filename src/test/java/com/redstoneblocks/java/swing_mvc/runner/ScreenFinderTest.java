@@ -1,15 +1,12 @@
-package runner;
+package com.redstoneblocks.java.swing_mvc.runner;
 
 import com.redstoneblocks.java.swing_mvc.MVC;
 import com.redstoneblocks.java.swing_mvc.core.Controller;
 import com.redstoneblocks.java.swing_mvc.core.Model;
 import com.redstoneblocks.java.swing_mvc.core.View;
-import com.redstoneblocks.java.swing_mvc.runner.DuplicateScreenException;
-import com.redstoneblocks.java.swing_mvc.runner.ScreenCreator;
-import com.redstoneblocks.java.swing_mvc.runner.ScreenFinder;
-import com.redstoneblocks.java.swing_mvc.runner.ScreenMissingPartsException;
 import com.redstoneblocks.java.swing_mvc.util.AnnotationFinder;
 import com.redstoneblocks.java.swing_mvc.util.Navigator;
+import com.redstoneblocks.java.swing_mvc.util.Tuple2;
 import org.junit.jupiter.api.Test;
 
 import javax.swing.*;
@@ -51,10 +48,10 @@ class ScreenFinderTest {
 
         assertDoesNotThrow(() -> {
             ScreenFinder screenFinder = new ScreenFinder(finder);
-            ScreenCreator<?, ?, ?>[] found = screenFinder.find();
+            Tuple2<ScreenCreator<?, ?, ?>, Boolean>[] found = screenFinder.find();
             assertEquals(1, found.length, "Mismatched Lengths");
-            assertNotNull(found[0]);
-            assertEquals("TEST1", found[0].getName());
+            assertNotNull(found[0].first);
+            assertEquals("TEST1", found[0].first.getName());
         });
 
     }
@@ -68,13 +65,13 @@ class ScreenFinderTest {
 
         assertDoesNotThrow(() -> {
             ScreenFinder screenFinder = new ScreenFinder(finder);
-            ScreenCreator<?, ?, ?>[] found = screenFinder.find();
+            Tuple2<ScreenCreator<?, ?, ?>, Boolean>[] found = screenFinder.find();
             assertEquals(2, found.length, "Mismatched Lengths");
             assertNotNull(found[0]);
             assertNotNull(found[1]);
 
-            assertTrue(found[0].getName().equals("TEST1") ^ found[1].getName().equals("TEST1"), "No TEST1");
-            assertTrue(found[0].getName().equals("TEST2") ^ found[1].getName().equals("TEST2"), "No TEST2");
+            assertTrue(found[0].first.getName().equals("TEST1") ^ found[1].first.getName().equals("TEST1"), "No TEST1");
+            assertTrue(found[0].first.getName().equals("TEST2") ^ found[1].first.getName().equals("TEST2"), "No TEST2");
         });
     }
 
@@ -85,7 +82,7 @@ class ScreenFinderTest {
 
         assertDoesNotThrow(() -> {
             ScreenFinder screenFinder = new ScreenFinder(finder);
-            ScreenCreator<?, ?, ?>[] found = screenFinder.find();
+            Tuple2<ScreenCreator<?, ?, ?>, Boolean>[] found = screenFinder.find();
             assertEquals(0, found.length, "There should be no screens, but found some");
         });
     }

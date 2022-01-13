@@ -1,9 +1,5 @@
-package runner;
+package com.redstoneblocks.java.swing_mvc.runner;
 
-import com.redstoneblocks.java.swing_mvc.runner.NoScreensException;
-import com.redstoneblocks.java.swing_mvc.runner.Screen;
-import com.redstoneblocks.java.swing_mvc.runner.ScreenCreator;
-import com.redstoneblocks.java.swing_mvc.runner.ScreenRegistry;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
@@ -29,7 +25,7 @@ class ScreenRegistryTest {
 
         ScreenCreator<?, ?, ?> fake = mock(ScreenCreator.class);
 
-        registry.addScreen(fake);
+        registry.addScreen(fake, false);
 
         assertDoesNotThrow(() -> {
             Screen screen = registry.createEntryPoint();
@@ -44,7 +40,7 @@ class ScreenRegistryTest {
 
         when(fake.getName()).thenReturn("TEST");
 
-        registry.addScreen(fake);
+        registry.addScreen(fake, false);
 
         assertTrue(registry.containsScreen("TEST"));
     }
@@ -57,7 +53,7 @@ class ScreenRegistryTest {
 
         when(fake.getName()).thenReturn("TEST");
 
-        registry.addScreen(fake);
+        registry.addScreen(fake, false);
 
         assertFalse(registry.containsScreen("NOT TEST"));
     }

@@ -1,30 +1,27 @@
-package runner;
+package com.redstoneblocks.java.swing_mvc.runner;
 
 import com.redstoneblocks.java.swing_mvc.core.Controller;
 import com.redstoneblocks.java.swing_mvc.core.Model;
 import com.redstoneblocks.java.swing_mvc.core.View;
-import com.redstoneblocks.java.swing_mvc.runner.Screen;
 import com.redstoneblocks.java.swing_mvc.util.Navigator;
 import org.junit.jupiter.api.Test;
 
 import javax.swing.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertNotSame;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class ScreenTest {
+class ScreenCreatorTest {
     @Test
-    void whenGetterIsCalled_shouldReturnValue() {
-        Model model = new FakeModel();
-        View view = new FakeView();
-        Controller controller = new FakeController(view, model);
+    void whenScreenCreatorCreatesScreen_shouldNotBeSame() {
+        ScreenCreator<Class<FakeModel>, Class<FakeView>, Class<FakeController>> creator = new ScreenCreator<>(FakeModel.class, FakeView.class, FakeController.class, "TEST");
+        assertNotSame(creator.create(), creator.create());
+    }
 
-        Screen screen = new Screen(model, view, controller, "TEST");
-
-        assertSame(model, screen.getModel());
-        assertSame(view, screen.getView());
-        assertSame(controller, screen.getController());
-        assertEquals("TEST", screen.getName());
+    @Test
+    void whenScreenCreatorGetsNullValues_shouldThrowAnException() {
+        ScreenCreator<Class<FakeModel>, Class<FakeView>, Class<FakeController>> creator = new ScreenCreator<>(null, null, null, "TEST");
+        assertThrows(RuntimeException.class, creator::create);
     }
 
     static class FakeModel extends Model {

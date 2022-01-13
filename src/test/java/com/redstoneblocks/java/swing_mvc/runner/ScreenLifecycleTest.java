@@ -1,10 +1,8 @@
-package runner;
+package com.redstoneblocks.java.swing_mvc.runner;
 
 import com.redstoneblocks.java.swing_mvc.core.Controller;
 import com.redstoneblocks.java.swing_mvc.core.Model;
 import com.redstoneblocks.java.swing_mvc.core.View;
-import com.redstoneblocks.java.swing_mvc.runner.Screen;
-import com.redstoneblocks.java.swing_mvc.runner.ScreenLifecycle;
 import com.redstoneblocks.java.swing_mvc.util.Navigator;
 import org.junit.jupiter.api.Test;
 

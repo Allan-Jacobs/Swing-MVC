@@ -19,6 +19,7 @@ public class ScreenRegistry {
     private static ScreenRegistry registry = null;
     private final AnnotationFinder finder;
     private final Map<String, ScreenCreator<?, ?, ?>> screens = new HashMap<>();
+    private String entryPoint;
 
     private ScreenRegistry(AnnotationFinder annotationFinder) {
         finder = annotationFinder;
@@ -34,11 +35,19 @@ public class ScreenRegistry {
      */
     public <M extends Class<? extends Model>,
             V extends Class<? extends View>,
-            C extends Class<? extends Controller>> void addScreen(ScreenCreator<M, V, C> screen) {
+            C extends Class<? extends Controller>> void addScreen(ScreenCreator<M, V, C> screen, boolean isEntryPoint) {
         if (!screens.containsKey(screen.getName())) {
             screens.put(screen.getName(), screen);
         }
+        if (isEntryPoint) {
+            if (entryPoint == null) {
+                entryPoint = screen.getName();
+            } else {
+                throw new DuplicateScreenException("Screen " + screen.getName() + " cannot be set as the entrypoint because " + entryPoint + "is the entry point.");
+            }
+        }
     }
+
 
     /**
      * create a new ScreenRegistry if it doesn't exist, or return the current one.
@@ -95,7 +104,7 @@ public class ScreenRegistry {
      */
     public void addScreensFromClassPath() {
         try {
-            Arrays.stream(new ScreenFinder(finder).find()).forEach(this::addScreen);
+            Arrays.stream(new ScreenFinder(finder).find()).forEach(tuple2 -> addScreen(tuple2.first, tuple2.second));
         } catch (ScreenMissingPartsException | DuplicateScreenException e) {
             e.printStackTrace();
         }
