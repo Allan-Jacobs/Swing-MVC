@@ -1,5 +1,6 @@
 package util;
 
+import com.redstoneblocks.java.swing_mvc.annotations.util.Tuple;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

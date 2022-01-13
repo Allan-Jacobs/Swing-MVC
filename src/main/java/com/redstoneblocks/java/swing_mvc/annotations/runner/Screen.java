@@ -1,8 +1,8 @@
-package runner;
+package com.redstoneblocks.java.swing_mvc.annotations.runner;
 
-import core.Controller;
-import core.Model;
-import core.View;
+import com.redstoneblocks.java.swing_mvc.annotations.core.Controller;
+import com.redstoneblocks.java.swing_mvc.annotations.core.Model;
+import com.redstoneblocks.java.swing_mvc.annotations.core.View;
 
 /**
  * A class to warp an MVC system. After navigating, it is discarded.

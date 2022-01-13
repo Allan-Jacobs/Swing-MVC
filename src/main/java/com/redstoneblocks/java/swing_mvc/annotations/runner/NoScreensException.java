@@ -1,4 +1,4 @@
-package runner;
+package com.redstoneblocks.java.swing_mvc.annotations.runner;
 
 /**
  * An exception thrown when no screens exist.

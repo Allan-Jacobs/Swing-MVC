@@ -1,11 +1,11 @@
-package runner;
+package com.redstoneblocks.java.swing_mvc.annotations.runner;
 
-import core.Controller;
-import core.Model;
-import core.View;
-import util.AnnotationFinder;
-import util.Navigator;
-import util.ReflectionsServiceImpl;
+import com.redstoneblocks.java.swing_mvc.annotations.core.Controller;
+import com.redstoneblocks.java.swing_mvc.annotations.core.Model;
+import com.redstoneblocks.java.swing_mvc.annotations.core.View;
+import com.redstoneblocks.java.swing_mvc.annotations.util.AnnotationFinder;
+import com.redstoneblocks.java.swing_mvc.annotations.util.Navigator;
+import com.redstoneblocks.java.swing_mvc.annotations.util.ReflectionsServiceImpl;
 
 import java.util.Arrays;
 import java.util.HashMap;

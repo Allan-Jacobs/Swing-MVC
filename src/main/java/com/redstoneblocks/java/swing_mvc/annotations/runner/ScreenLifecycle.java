@@ -1,6 +1,6 @@
-package runner;
+package com.redstoneblocks.java.swing_mvc.annotations.runner;
 
-import util.Navigator;
+import com.redstoneblocks.java.swing_mvc.annotations.util.Navigator;
 
 /**
  * A class to manage a screen's lifecycle.

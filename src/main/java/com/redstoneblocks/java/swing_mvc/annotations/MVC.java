@@ -1,4 +1,4 @@
-package annotations;
+package com.redstoneblocks.java.swing_mvc.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

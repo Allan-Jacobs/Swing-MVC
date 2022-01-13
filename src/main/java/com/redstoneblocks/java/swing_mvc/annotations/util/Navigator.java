@@ -1,14 +1,16 @@
-package util;
+package com.redstoneblocks.java.swing_mvc.annotations.util;
 
-import runner.GUI;
-import runner.ScreenLifecycleManager;
-import runner.ScreenRegistry;
+import com.redstoneblocks.java.swing_mvc.annotations.MVC;
+import com.redstoneblocks.java.swing_mvc.annotations.core.Controller;
+import com.redstoneblocks.java.swing_mvc.annotations.runner.GUI;
+import com.redstoneblocks.java.swing_mvc.annotations.runner.ScreenLifecycleManager;
+import com.redstoneblocks.java.swing_mvc.annotations.runner.ScreenRegistry;
 
 /**
  * A Class to allow easy navigation within controllers.
  * This is passed to controllers in their init method to allow them to navigate.
  *
- * @see core.Controller
+ * @see Controller
  */
 public class Navigator {
     private final ScreenLifecycleManager manager;
@@ -23,7 +25,7 @@ public class Navigator {
      * Navigate to a page with no metadata (null)
      *
      * @param to The name of the screen, e.g. <code>"NAME"</code> for a screen made with <code>@MVC("NAME")</code>
-     * @see annotations.MVC
+     * @see MVC
      */
     public void navigate(String to) {
         if (!registry.containsScreen(to))
@@ -37,7 +39,7 @@ public class Navigator {
      * @param to       The name of the screen, e.g. "NAME" for a screen made with @MVC("NAME")
      * @param metadata the specified metadata as an object. The resulting controller may interpret
      *                 it however it likes.
-     * @see annotations.MVC
+     * @see MVC
      * @see GUI
      */
     public void navigate(String to, Object metadata) {

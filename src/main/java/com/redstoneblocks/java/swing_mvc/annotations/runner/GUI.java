@@ -1,7 +1,7 @@
-package runner;
+package com.redstoneblocks.java.swing_mvc.annotations.runner;
 
-import core.View;
-import util.Navigator;
+import com.redstoneblocks.java.swing_mvc.annotations.core.View;
+import com.redstoneblocks.java.swing_mvc.annotations.util.Navigator;
 
 import javax.swing.*;
 import java.awt.*;

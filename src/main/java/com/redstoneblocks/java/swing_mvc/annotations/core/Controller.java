@@ -1,6 +1,7 @@
-package core;
+package com.redstoneblocks.java.swing_mvc.annotations.core;
 
-import util.Navigator;
+import com.redstoneblocks.java.swing_mvc.annotations.runner.GUI;
+import com.redstoneblocks.java.swing_mvc.annotations.util.Navigator;
 
 /**
  * A base core.Controller class for MVC.
@@ -37,7 +38,7 @@ public abstract class Controller {
      * Get the view for <code>runner.GUI</code> to render it.
      *
      * @return the controllers view
-     * @see runner.GUI
+     * @see GUI
      */
     public View getView() {
         return view;

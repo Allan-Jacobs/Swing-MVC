@@ -1,4 +1,7 @@
-package util;
+package com.redstoneblocks.java.swing_mvc.annotations.util;
+
+import com.redstoneblocks.java.swing_mvc.annotations.MVC;
+import com.redstoneblocks.java.swing_mvc.annotations.runner.ScreenFinder;
 
 import java.lang.annotation.Annotation;
 import java.util.ArrayList;
@@ -26,8 +29,8 @@ public class AnnotationFinder {
      *
      * @param annotation the annotation class to look for
      * @param <T>        the type of annotation
-     * @see runner.ScreenFinder
-     * @see annotations.MVC
+     * @see ScreenFinder
+     * @see MVC
      */
     public <T extends Annotation> List<Class<?>> find(Class<? extends Annotation> annotation) {
 

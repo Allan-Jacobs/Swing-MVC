@@ -1,4 +1,4 @@
-package util;
+package com.redstoneblocks.java.swing_mvc.annotations.util;
 
 /**
  * An unchecked exception if the target screen can not be navigated to

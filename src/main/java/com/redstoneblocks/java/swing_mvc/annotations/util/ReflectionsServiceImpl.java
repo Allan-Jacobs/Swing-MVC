@@ -1,4 +1,4 @@
-package util;
+package com.redstoneblocks.java.swing_mvc.annotations.util;
 
 import org.reflections.Configuration;
 import org.reflections.Reflections;
