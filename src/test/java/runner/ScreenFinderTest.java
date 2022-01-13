@@ -1,12 +1,16 @@
 package runner;
 
-import annotations.MVC;
-import core.Controller;
-import core.Model;
-import core.View;
+import com.redstoneblocks.java.swing_mvc.annotations.MVC;
+import com.redstoneblocks.java.swing_mvc.annotations.core.Controller;
+import com.redstoneblocks.java.swing_mvc.annotations.core.Model;
+import com.redstoneblocks.java.swing_mvc.annotations.core.View;
+import com.redstoneblocks.java.swing_mvc.annotations.runner.DuplicateScreenException;
+import com.redstoneblocks.java.swing_mvc.annotations.runner.ScreenCreator;
+import com.redstoneblocks.java.swing_mvc.annotations.runner.ScreenFinder;
+import com.redstoneblocks.java.swing_mvc.annotations.runner.ScreenMissingPartsException;
+import com.redstoneblocks.java.swing_mvc.annotations.util.AnnotationFinder;
+import com.redstoneblocks.java.swing_mvc.annotations.util.Navigator;
 import org.junit.jupiter.api.Test;
-import util.AnnotationFinder;
-import util.Navigator;
 
 import javax.swing.*;
 import java.util.ArrayList;

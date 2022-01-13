@@ -1,10 +1,12 @@
 package runner;
 
-import core.Controller;
-import core.Model;
-import core.View;
+import com.redstoneblocks.java.swing_mvc.annotations.core.Controller;
+import com.redstoneblocks.java.swing_mvc.annotations.core.Model;
+import com.redstoneblocks.java.swing_mvc.annotations.core.View;
+import com.redstoneblocks.java.swing_mvc.annotations.runner.Screen;
+import com.redstoneblocks.java.swing_mvc.annotations.runner.ScreenLifecycle;
+import com.redstoneblocks.java.swing_mvc.annotations.util.Navigator;
 import org.junit.jupiter.api.Test;
-import util.Navigator;
 
 import static org.mockito.Mockito.*;
 
