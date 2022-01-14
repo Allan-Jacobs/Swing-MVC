@@ -32,5 +32,7 @@ Then add the dependency to your `pom.xml`
 </dependencies>
 ```
 
+After intstalling, go check out our wiki for tutorials.
+
 NOTE: currently there is a bug that will leave the app running after you close the window.
 This will be fixed in the next version, and will default to JFrame.EXIT_ON_CLOSE behavoir.
