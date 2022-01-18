@@ -6,7 +6,7 @@
 
     <groupId>com.redstoneblocks.java</groupId>
     <artifactId>Swing-MVC</artifactId>
-    <version>0.0.3-SNAPSHOT</version>
+    <version>0.0.4</version>
 
     <name>Swing MVC</name>
     <description>A Lightweight MVC Framework for Java Swing</description>
