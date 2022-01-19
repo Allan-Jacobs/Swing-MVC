@@ -1,8 +1,5 @@
 # Swing-MVC
 
-[![GitHub issues](https://img.shields.io/github/issues/Allan-Jacobs/Swing-MVC)](https://github.com/Allan-Jacobs/Swing-MVC/issues)
-[![GitHub license](https://img.shields.io/github/license/Allan-Jacobs/Swing-MVC)](https://github.com/Allan-Jacobs/Swing-MVC/blob/master/LICENSE)
-[![GitHub stars](https://img.shields.io/github/stars/Allan-Jacobs/Swing-MVC)](https://github.com/Allan-Jacobs/Swing-MVC/stargazers)
 ![Maven Central](https://img.shields.io/maven-central/v/com.redstoneblocks.java/Swing-MVC)
 
 An MVC framework for Swing.
