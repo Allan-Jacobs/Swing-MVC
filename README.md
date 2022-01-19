@@ -1,6 +1,6 @@
 # Swing-MVC
 
-![Maven Central](https://img.shields.io/maven-central/v/com.redstoneblocks.java/Swing-MVC)
+[![Maven Central](https://img.shields.io/maven-central/v/com.redstoneblocks.java/Swing-MVC)](https://search.maven.org/artifact/com.redstoneblocks.java/Swing-MVC)
 
 An MVC framework for Swing.
 
