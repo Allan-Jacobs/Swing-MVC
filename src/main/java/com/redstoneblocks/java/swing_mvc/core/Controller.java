@@ -6,9 +6,9 @@ import com.redstoneblocks.java.swing_mvc.util.Navigator;
 /**
  * A base core.Controller class for MVC.
  */
-public abstract class Controller {
-    protected View view;
-    protected Model model;
+public abstract class Controller<V extends View<M>, M extends Model<?>> {
+    protected V view;
+    protected M model;
 
     /**
      * Create the controller with the view and model
@@ -16,7 +16,7 @@ public abstract class Controller {
      * @param view  the view (gui)
      * @param model the model (data)
      */
-    public Controller(View view, Model model) {
+    public Controller(V view, M model) {
         this.view = view;
         this.model = model;
     }
@@ -40,7 +40,7 @@ public abstract class Controller {
      * @return the controllers view
      * @see GUI
      */
-    public View getView() {
+    public V getView() {
         return view;
     }
 
