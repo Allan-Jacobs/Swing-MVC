@@ -11,7 +11,9 @@ import java.awt.event.WindowEvent;
 public class App
 {
 /**
- * Create the gui and start it with the specified config
+ * Create the gui and start it with the specified config.
+ *
+ * @param config the configuration to apply
  */
 public static void createAndStart(FrameConfiguration config)
 {
