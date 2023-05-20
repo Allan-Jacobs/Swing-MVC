@@ -23,4 +23,4 @@ Add the dependency to your `pom.xml`
 </dependencies>
 ```
 
-After intstalling, go check out our [wiki](https://github.com/Allan-Jacobs/Swing-MVC/wiki) for tutorials.
+After installing, go check out our [wiki](https://github.com/Allan-Jacobs/Swing-MVC/wiki) for tutorials.
